@@ -1,0 +1,33 @@
+.footer{
+
+    width: 100%;
+    background-color: #08734e;
+    position: absolute;
+    margin-top: 35px;
+}
+.footer-wrapper{
+    max-width: 1000px;
+    height: 150px;
+    margin: 0 auto;
+    padding-top: 44px;
+}
+
+.col-3{
+    box-sizing: border-box;
+    width: 25%;
+    display: inline-block;
+    float: left;
+    font-size: 18px;
+    color: #fff;
+    overflow: hidden;
+    text-align: center;
+}
+.footer-text{
+    margin: 0;
+}
+
+@media only screen and (max-width: 724px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+}

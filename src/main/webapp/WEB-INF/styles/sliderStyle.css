@@ -1,0 +1,149 @@
+.hide {
+    display: none;
+}
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 34px;
+    transition: 0.6s ease;
+    border-radius: 0 50px 50px 0;
+    z-index: 10;
+}
+
+.next {
+    right: 0px;
+    border-radius: 50px 0 0 50px;
+}
+
+.prev:hover, .next:hover {
+    background-color: #089369;
+}
+
+.dot-inside {
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 3%;
+
+}
+
+.dot {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #08734e;
+}
+
+/*.slide-1 {*/
+/*position: relative;*/
+/*}*/
+/*.slide-2 {*/
+/*position: relative;*/
+/*}*/
+/*.slide-3 {*/
+/*position: relative;*/
+/*}*/
+/*.slide-4 {*/
+/*position: relative;*/
+/*}*/
+/*.slide-5 {*/
+/*position: relative;*/
+/*}*/
+
+.slideintoleft {
+    -webkit-animation-name: slideInL;
+    -webkit-animation-duration: 0.5s;
+    animation-name: slideInL;
+    animation-duration: 0.5s;
+}
+
+@-webkit-keyframes slideInL {
+    from {
+        left: 100%
+    }
+    to {
+        left: 0
+    }
+}
+
+@keyframes slideInL {
+    from {
+        left: 100%
+    }
+    to {
+        left: 0
+    }
+}
+
+.slideintoright {
+    -webkit-animation-name: slideInR;
+    -webkit-animation-duration: 0.5s;
+    animation-name: slideInR;
+    animation-duration: 0.5s;
+}
+
+@-webkit-keyframes slideInR {
+    from {
+        left: -100%
+    }
+    to {
+        left: 0
+    }
+}
+
+@keyframes slideInR {
+    from {
+        left: -100%
+    }
+    to {
+        left: 0
+    }
+}
+
+.slideouttoright {
+    -webkit-animation-name: slideOutR;
+    -webkit-animation-duration: 0.5s;
+    animation-name: slideOutR;
+    animation-duration: 0.5s;
+}
+
+@-webkit-keyframes slideOutR {
+    from {
+        left: 0
+    }
+    to {
+        left: -100%
+    }
+}
+
+@keyframes slideOutR {
+    from {
+        left: 0
+    }
+    to {
+        left: -100%
+    }
+}
