@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><html>
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="/css/headStyle.css">
@@ -34,9 +35,9 @@
 
     <div class="col-65 log-container">
         <form action="${loginUrl}" method="post">
-            <label for="email">User email</label>
+            <label for="fname">Username</label>
             <br>
-            <input type="email" id="email" name="email" placeholder="email" required>
+            <input type="text" id="fname" name="username" placeholder="Username" required>
             <br>
             <label for="lname">Password</label>
             <br>

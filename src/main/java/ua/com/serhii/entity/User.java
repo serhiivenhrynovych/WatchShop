@@ -29,7 +29,7 @@ public class User implements UserDetails {
     private Long id;
     @NotNull
     @Size(min = 1, max = 40, message = "User first name can't be longer than 40 characters")
-    @Column(name = "first_name", length = 40)
+    @Column(name = "username", length = 40)
     private String username;
     @NotNull
     @Size(min = 1, max = 254, message = "User email can't be longer than 254 characters")
