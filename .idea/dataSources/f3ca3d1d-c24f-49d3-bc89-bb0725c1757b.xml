@@ -921,118 +921,242 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="232" parent="8" name="Product"/>
-    <table id="233" parent="8" name="users"/>
-    <column id="234" parent="232" name="id">
+    <table id="232" parent="8" name="Basket"/>
+    <table id="233" parent="8" name="Basket_Product"/>
+    <table id="234" parent="8" name="Product"/>
+    <table id="235" parent="8" name="users"/>
+    <table id="236" parent="8" name="users_Product"/>
+    <column id="237" parent="232" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="232" name="image">
+    <column id="238" parent="232" name="user_id">
       <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="232" name="price">
+    <column id="239" parent="232" name="totalSum">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="237" parent="232" name="productName">
-      <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="238" parent="232" name="PRIMARY">
+    <index id="240" parent="232" name="FKan2f2mgmalfimlu5075coaknj">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="241" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="239" parent="233" name="id">
+    <foreign-key id="242" parent="232" name="FKan2f2mgmalfimlu5075coaknj">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>watchShop</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="243" parent="233" name="Basket_id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="244" parent="233" name="products_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="245" parent="233" name="UK_lpad2a8yg7c9jlxaiee9mh0v8">
+      <ColNames>products_id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="246" parent="233" name="FKfqaaffqx4knslwwqdomcibmfm">
+      <ColNames>Basket_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="247" parent="233" name="UK_lpad2a8yg7c9jlxaiee9mh0v8">
+      <ColNames>products_id</ColNames>
+      <UnderlyingIndexName>UK_lpad2a8yg7c9jlxaiee9mh0v8</UnderlyingIndexName>
+    </key>
+    <foreign-key id="248" parent="233" name="FKfqaaffqx4knslwwqdomcibmfm">
+      <ColNames>Basket_id</ColNames>
+      <RefSchemaName>watchShop</RefSchemaName>
+      <RefTableName>Basket</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="249" parent="233" name="FKl8y5aha6jb3pomtls5jqmfghj">
+      <ColNames>products_id</ColNames>
+      <RefSchemaName>watchShop</RefSchemaName>
+      <RefTableName>Product</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="250" parent="234" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="233" name="accountNonExpired">
+    <column id="251" parent="234" name="image">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="252" parent="234" name="price">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="253" parent="234" name="productName">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="254" parent="234" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="255" parent="235" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="256" parent="235" name="accountNonExpired">
       <Position>2</Position>
       <DataType>bit(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="233" name="accountNonLocked">
+    <column id="257" parent="235" name="accountNonLocked">
       <Position>3</Position>
       <DataType>bit(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="233" name="address">
+    <column id="258" parent="235" name="address">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="233" name="role">
+    <column id="259" parent="235" name="role">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="233" name="credentialsNonExpired">
+    <column id="260" parent="235" name="credentialsNonExpired">
       <Position>6</Position>
       <DataType>bit(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="233" name="email">
+    <column id="261" parent="235" name="email">
       <Position>7</Position>
       <DataType>varchar(254)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="233" name="enabled">
+    <column id="262" parent="235" name="enabled">
       <Position>8</Position>
       <DataType>bit(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="233" name="user_password">
+    <column id="263" parent="235" name="user_password">
       <Position>9</Position>
       <DataType>varchar(60)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="233" name="mobile_phone">
+    <column id="264" parent="235" name="mobile_phone">
       <Position>10</Position>
       <DataType>varchar(18)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="233" name="start_date">
+    <column id="265" parent="235" name="start_date">
       <Position>11</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="233" name="username">
+    <column id="266" parent="235" name="username">
       <Position>12</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="251" parent="233" name="UK_6dotkott2kjsp8vw4d0m25fb7">
+    <column id="267" parent="235" name="basket_id">
+      <Position>13</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="268" parent="235" name="UK_6dotkott2kjsp8vw4d0m25fb7">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="252" parent="233" name="PRIMARY">
+    <index id="269" parent="235" name="FKqw20x6qjmxgk0pahfd3b0wfnp">
+      <ColNames>basket_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="270" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="253" parent="233" name="UK_6dotkott2kjsp8vw4d0m25fb7">
+    <key id="271" parent="235" name="UK_6dotkott2kjsp8vw4d0m25fb7">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>UK_6dotkott2kjsp8vw4d0m25fb7</UnderlyingIndexName>
     </key>
+    <foreign-key id="272" parent="235" name="FKqw20x6qjmxgk0pahfd3b0wfnp">
+      <ColNames>basket_id</ColNames>
+      <RefSchemaName>watchShop</RefSchemaName>
+      <RefTableName>Basket</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="273" parent="236" name="User_id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="274" parent="236" name="basket_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="275" parent="236" name="UK_s0ja4dwvg8y2okjb1gmxio5y5">
+      <ColNames>basket_id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="276" parent="236" name="FKe2jqw0yts7868og2iofgxd4q6">
+      <ColNames>User_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="277" parent="236" name="UK_s0ja4dwvg8y2okjb1gmxio5y5">
+      <ColNames>basket_id</ColNames>
+      <UnderlyingIndexName>UK_s0ja4dwvg8y2okjb1gmxio5y5</UnderlyingIndexName>
+    </key>
+    <foreign-key id="278" parent="236" name="FKe2jqw0yts7868og2iofgxd4q6">
+      <ColNames>User_id</ColNames>
+      <RefSchemaName>watchShop</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="279" parent="236" name="FKr19fiwr9jdn3tukjf5b025it">
+      <ColNames>basket_id</ColNames>
+      <RefSchemaName>watchShop</RefSchemaName>
+      <RefTableName>Product</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

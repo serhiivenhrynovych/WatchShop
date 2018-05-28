@@ -50,6 +50,9 @@
     text-decoration: none;
     margin: 0 25px;
 }
+.prod-buy-button:hover {
+    background-color: #08ac76;
+}
 
 .none {
     text-decoration: none;

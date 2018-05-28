@@ -8,21 +8,36 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ua.com.serhii.dao.TemporalLinkDAO;
 import ua.com.serhii.dao.UserDAO;
+import ua.com.serhii.entity.Basket;
+import ua.com.serhii.entity.TemporalLink;
 import ua.com.serhii.entity.User;
-import ua.com.serhii.entity.enumeration.Role;
+import ua.com.serhii.entity.enumeration.TemporalLinkType;
+import ua.com.serhii.service.EmailService;
 import ua.com.serhii.service.UserService;
+import ua.com.serhii.util.RandomUtil;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
+
+    private int linkExpiryHour = 24;
 
     @Autowired
     private UserDAO userDAO;
 
     @Autowired
-    public PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private TemporalLinkDAO temporalLinkDAO;
+
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public User saveUser(User user) {
@@ -32,7 +47,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public void createUser(String username, String email, String password, String address, String phone) {
         final String hashedPassword = passwordEncoder.encode(password);
-        User user = new User(username, email, hashedPassword, LocalDate.now(), address, phone);
+        Basket basket = new Basket();
+        User user = new User(username, email, hashedPassword, LocalDate.now(), address, phone, basket);
         saveUser(user);
     }
 
@@ -46,13 +62,32 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userDAO.findOne(id);
     }
 
-    @Bean
-    PasswordEncoder getEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userDAO.findByName(username);
     }
+
+    @Transactional
+    public void sendForgotPasswordEmail(String email) {
+        User user = userDAO.findOneByEmail(email);
+        TemporalLink temporalLink = new TemporalLink(RandomUtil.generateToken(), TemporalLinkType.FORGOT_PASSWORD_CONFIRMATION,
+                LocalDateTime.now().plusHours(linkExpiryHour), user);
+        temporalLinkDAO.save(temporalLink);
+        emailService.sendConfirmForgotPasswordEmail(user, temporalLink.getToken());
+    }
+
+    @Transactional
+    @Override
+    public void checkAndChangePassword(String token, String password, String confirmPassword) {
+
+        TemporalLink temporalLink = temporalLinkDAO.findByTokenAndTypeAndActiveIsTrueAndExpiryDateIsAfter(
+                token, TemporalLinkType.FORGOT_PASSWORD_CONFIRMATION, LocalDateTime.now());
+
+        User user = temporalLink.getUsers();
+        System.out.println(user);
+        user.setPassword(passwordEncoder.encode(password));
+        userDAO.save(user);
+        temporalLinkDAO.updateActiveTemporalLinkByToken(token, false);
+    }
+
 }

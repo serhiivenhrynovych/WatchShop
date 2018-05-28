@@ -12,4 +12,8 @@ public interface UserService {
 
     User findOneUser(Long id);
 
+    void sendForgotPasswordEmail(String email);
+
+    void checkAndChangePassword(String token, String password, String confirmPassword);
+
 }

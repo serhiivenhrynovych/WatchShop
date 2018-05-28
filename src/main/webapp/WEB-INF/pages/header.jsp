@@ -26,21 +26,20 @@
                 <li class="menu1"><a href="main">Головна</a></li>
                 <li class="menu2"><a href="#">Новини</a></li>
                 <li class="menu3"><a href="#">Контакти</a></li>
-                <li class="menu4"><a href="basket">Корзина</a></li>
-                <li class="goright dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">My Cabinet</a>
+                <li class="goright dropdown menu4">
+                    <a href="javascript:void(0)" class="dropbtn">Кабінет</a>
                     <div class="dropdown-content">
                         <sec:authorize access="isAuthenticated()">
-                            <a href="cabina"> Hello</a>${user}
+                            <a href="basket">Корзина</a>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
-                            <a href="<c:url value="/logout" />"> Log out</a>
+                            <a href="<c:url value="/logout" />"> Вихід</a>
                         </sec:authorize>
                         <sec:authorize access="!isAuthenticated()">
-                            <a href="login"> Log in</a>
+                            <a href="login"> Вхід</a>
                         </sec:authorize>
                         <sec:authorize access="!isAuthenticated()">
-                            <a href="registration"> Registration</a>
+                            <a href="registration"> Реєстрація</a>
                         </sec:authorize>
                     </div>
 

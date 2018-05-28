@@ -52,6 +52,8 @@ public class User implements UserDetails {
     @Size(max = 18, message = "Mobile phone number can't be longer than 18 characters")
     @Column(name = "mobile_phone", length = 18)
     private String phone;
+    @OneToOne
+    private Basket basket;
 
     private boolean accountNonExpired = true;
     private boolean accountNonLocked = true;
@@ -64,12 +66,13 @@ public class User implements UserDetails {
         return authorities;
     }
 
-    public User(String username, String email, String password, LocalDate startDate, String address,String phone) {
+    public User(String username, String email, String password, LocalDate startDate, String address, String phone, Basket basket) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.startDate = startDate;
         this.address = address;
         this.phone = phone;
+        this.basket = basket;
     }
 }
