@@ -2,6 +2,9 @@ package ua.com.serhii.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,7 +16,7 @@ import ua.com.serhii.service.UserService;
 import java.time.LocalDate;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
     private UserDAO userDAO;
@@ -43,4 +46,13 @@ public class UserServiceImpl implements UserService {
         return userDAO.findOne(id);
     }
 
+    @Bean
+    PasswordEncoder getEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userDAO.findByName(username);
+    }
 }

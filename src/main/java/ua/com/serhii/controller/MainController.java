@@ -3,9 +3,11 @@ package ua.com.serhii.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ua.com.serhii.entity.Product;
@@ -30,8 +32,16 @@ public class MainController {
     }
 
     @GetMapping("/admin")
-    public String adminPage() {
+    public String adminPage(ModelMap model, Principal principal) {
+        model.addAttribute("principal", principal);
+        model.addAttribute("user", getPrincipal());
         return "admin";
+    }
+
+    @GetMapping("/Access_Denied")
+    public String accessDeniedPage(ModelMap model){
+        model.addAttribute("user", getPrincipal());
+        return "accessDenied";
     }
 
     @GetMapping("/basket")
@@ -77,6 +87,18 @@ public class MainController {
         Product product = productService.findOneProduct(id);
         model.addAttribute("product", product);
         return "productPage";
+    }
+
+    private String getPrincipal(){
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if(principal instanceof UserDetails){
+            userName = ((UserDetails) principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
     }
 
 
