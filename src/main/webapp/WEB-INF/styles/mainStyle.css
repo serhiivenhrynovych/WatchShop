@@ -3,6 +3,10 @@
     display: inline-block;
 }
 
+.menu1{
+    text-decoration: underline;
+}
+
 .col-4 {
     background-color: #fff;
     box-sizing: border-box;

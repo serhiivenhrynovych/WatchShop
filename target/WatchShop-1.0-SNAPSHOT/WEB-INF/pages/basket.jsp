@@ -9,8 +9,9 @@
 <html>
 <head>
     <title>basket</title>
-    <link rel="stylesheet" href="/css/headerStyle.css">
+    <link rel="stylesheet" href="/css/headStyle.css">
     <link rel="stylesheet" href="/css/footStyle.css">
+    <link rel="stylesheet" href="/css/basketStyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>

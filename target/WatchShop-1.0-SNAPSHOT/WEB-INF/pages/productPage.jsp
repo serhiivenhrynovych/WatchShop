@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>productPage</title>
-    <link rel="stylesheet" href="/css/headerStyle.css">
+    <link rel="stylesheet" href="/css/headStyle.css">
     <link rel="stylesheet" href="/css/footStyle.css">
     <link rel="stylesheet" href="/css/productStyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,13 @@
                 $${product.price}
             </div>
             <div class="center prod-buy">
-                <a class="none" href=""><div class="prod-buy-button">Buy this product</div></a>
+                <sec:authorize access="isAuthenticated()">
+                    <a class="none" href="#"><div class="prod-buy-button">Buy this product Now</div></a>
+                </sec:authorize>
+                <sec:authorize access="!isAuthenticated()">
+                    <a class="none" href="login"><div class="prod-buy-button">Buy this product Now</div></a>
+                </sec:authorize>
+
                 <br>
                 <a class="none" href=""><div class="prod-buy-button">Add to basket</div></a>
             </div>

@@ -23,11 +23,11 @@
         </div>
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
-                <li><a href="main">Головна</a></li>
-                <li><a href="#">Новини</a></li>
-                <li><a href="#">Контакти</a></li>
-                <li><a href="admin">Кабінет</a></li>
-                <li><a href="basket">Корзина</a></li>
+                <li class="menu1"><a href="main">Головна</a></li>
+                <li class="menu2"><a href="#">Новини</a></li>
+                <li class="menu3"><a href="#">Контакти</a></li>
+                <li class="menu4"><a href="basket">Корзина</a></li>
+                <li class="menu5"><a href="login">Кабінет</a></li>
             </ul>
         </div>
         <span class="navTrigger">

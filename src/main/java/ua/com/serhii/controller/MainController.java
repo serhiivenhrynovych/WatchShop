@@ -1,6 +1,9 @@
 package ua.com.serhii.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,8 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import ua.com.serhii.entity.Product;
 import ua.com.serhii.service.ProductService;
 
-import java.io.File;
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 import java.util.List;
 
@@ -36,17 +39,29 @@ public class MainController {
         return "basket";
     }
 
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @GetMapping("/registration")
+    public String registrationPage() {
+        return "registration";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/login?logout";
+
+    }
+
     @PostMapping("saveProduct")
     public String saveProduct(@RequestParam String productName, @RequestParam Integer price, @RequestParam MultipartFile image) {
-        String imageName = "/imgprod/" + image.getOriginalFilename();
-
-        try {
-            image.transferTo(new File(System.getProperty("user.home") + File.separator + imageName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Product product = new Product(productName, price, imageName);
-        productService.saveProduct(product);
+        productService.saveProduct(productName, price, image);
         return "redirect:/admin";
     }
 

@@ -17,6 +17,10 @@
     text-align: center;
 }
 
+.adm-add-button:hover {
+    background-color: #08ac76;
+}
+
 .adm-delete-button {
     margin: 10px;
     border-radius: 95px;
@@ -26,6 +30,10 @@
     color: white;
     border: none;
     text-align: center;
+}
+
+.adm-delete-button:hover {
+    background-color: #a8666a;
 }
 
 .adm-main {
