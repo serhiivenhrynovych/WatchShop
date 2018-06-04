@@ -2,6 +2,8 @@ package ua.com.serhii.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,6 +17,7 @@ import ua.com.serhii.entity.Basket;
 import ua.com.serhii.entity.TemporalLink;
 import ua.com.serhii.entity.User;
 import ua.com.serhii.entity.enumeration.TemporalLinkType;
+import ua.com.serhii.exception.Unauthorized401Exception;
 import ua.com.serhii.service.EmailService;
 import ua.com.serhii.service.UserService;
 import ua.com.serhii.util.RandomUtil;
@@ -69,7 +72,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Transactional
     public void sendForgotPasswordEmail(String email) {
-        User user = userDAO.findOneByEmail(email);
+        User user = userDAO.findOneByEmail(email).get();
         TemporalLink temporalLink = new TemporalLink(RandomUtil.generateToken(), TemporalLinkType.FORGOT_PASSWORD_CONFIRMATION,
                 LocalDateTime.now().plusHours(linkExpiryHour), user);
         temporalLinkDAO.save(temporalLink);
@@ -88,6 +91,20 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setPassword(passwordEncoder.encode(password));
         userDAO.save(user);
         temporalLinkDAO.updateActiveTemporalLinkByToken(token, false);
+    }
+
+    @Override
+    public User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null) {
+            throw new Unauthorized401Exception("User authentication is required");
+        }
+        String currentUserEmail = authentication.getName();
+        return findUserByEmailIfExist(currentUserEmail);
+    }
+
+    private User findUserByEmailIfExist(String email) {
+        return userDAO.findOneByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Invalid email"));
     }
 
 }

@@ -16,4 +16,6 @@ public interface UserService {
 
     void checkAndChangePassword(String token, String password, String confirmPassword);
 
+    User getCurrentUser();
+
 }

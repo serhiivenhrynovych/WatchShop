@@ -35,7 +35,7 @@
             </div>
             <div class="center prod-buy">
                 <sec:authorize access="isAuthenticated()">
-                    <a class="none" href="#"><div class="prod-buy-button">Buy this product Now</div></a>
+                    <a class="none" href="addToBasket"><div class="prod-buy-button">Buy this product Now</div></a>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
                     <a class="none" href="login"><div class="prod-buy-button">Buy this product Now</div></a>

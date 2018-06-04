@@ -2,12 +2,14 @@ package ua.com.serhii.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ua.com.serhii.dao.BasketDAO;
 import ua.com.serhii.dao.ProductDAO;
 import ua.com.serhii.dao.UserDAO;
 import ua.com.serhii.entity.Basket;
 import ua.com.serhii.entity.Product;
 import ua.com.serhii.entity.User;
 import ua.com.serhii.service.BasketService;
+import ua.com.serhii.service.UserService;
 
 import java.util.List;
 
@@ -18,11 +20,14 @@ public class BasketServiceImpl implements BasketService {
     private ProductDAO productDAO;
 
     @Autowired
-    private UserDAO userDAO;
+    private UserService userService;
+
+    @Autowired
+    private BasketDAO basketDAO;
 
     @Override
     public List<Product> getProduct() {
-        User user = new User();
+        User user = userService.getCurrentUser();
         Basket basket = user.getBasket();
         return basket.getProducts();
 
@@ -30,24 +35,24 @@ public class BasketServiceImpl implements BasketService {
 
     @Override
     public void emptyBasket() {
-        User user = new User();
+        User user = userService.getCurrentUser();
         Basket basket = user.getBasket();
         basket.getProducts().clear();
     }
 
     @Override
     public void addProduct(Long id) {
-        //TODO find current user
-        User user = new User();
+        User user = userService.getCurrentUser();
         Basket basket = user.getBasket();
         Product product = productDAO.findOne(id);
         basket.getProducts().add(product);
+        basketDAO.save(basket);
     }
 
     @Override
     public double calculateFinalPrice() {
         Integer finalPrice = 0;
-        User user = new User();
+        User user = userService.getCurrentUser();
         Basket basket = user.getBasket();
         List<Product> productList = basket.getProducts();
         for (Product pr : productList) {
