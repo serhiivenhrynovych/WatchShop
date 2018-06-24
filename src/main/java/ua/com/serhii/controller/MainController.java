@@ -59,6 +59,16 @@ public class MainController {
         return "registration";
     }
 
+    @GetMapping("/forgot1")
+    public String forgotPassPage() {
+        return "forgot1";
+    }
+
+    @GetMapping("/forgot2")
+    public String confirmPassPage() {
+        return "forgot2";
+    }
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

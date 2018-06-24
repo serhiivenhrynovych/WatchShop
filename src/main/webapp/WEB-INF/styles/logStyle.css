@@ -1,5 +1,6 @@
 .content-wrapper{
     display: inline-block;
+    min-height: 60%;
 }
 
 .log-container{
@@ -84,6 +85,7 @@ input[type=submit] {
     border: none;
     border-radius: 15px;
     cursor: pointer;
+    font-size: 20px;
 }
 
 
@@ -99,6 +101,7 @@ input[type=submit]:hover {
     margin: 0 auto;
 }
 .btn1{
+    float: left;
     background-color: #733f42;
     padding: 8px 20px;
     border-radius: 15px;
@@ -107,6 +110,28 @@ input[type=submit]:hover {
     font-size: 16px;
     text-decoration: none;
 }
-.btn1:hover{
+.prod-buy-button:hover{
     background-color: #a8666a;
+}
+
+.main-wrapper {
+    max-width: 1000px;
+}
+
+.forgot-pass {
+    float: right;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.prod-buy-button {
+    float: left;
+    background-color: #733f42;
+    padding: 8px 16px;
+    color: white;
+    text-decoration: none;
+    border-radius: 18px;
+    font-size: 20px;
+    text-decoration: none;
+    margin: 0 25px;
 }

@@ -22,8 +22,8 @@
     <%@include file="header.jsp" %>
 
     <div class="main-wrapper adm-main">
-        <h1>Hello admin</h1>
-        <h3>Save new product</h3>
+        <h1>Привіт admin</h1>
+        <h3>добавити новий продукт</h3>
 
         <form action="saveProduct" method="post" enctype="multipart/form-data">
             <input class="adm-type" type="text" name="productName" placeholder="Product name" required>
@@ -37,7 +37,7 @@
                    name="${_csrf.parameterName}"
                    value="${_csrf.token}"/>
         </form>
-        <h3>Delete product by id</h3>
+        <h3>Видалити продукт за ідентифікатором</h3>
         <form action="removeProduct" method="post">
             <input class="adm-type" type="number" name="id" placeholder="id of product">
             <br>
@@ -48,7 +48,7 @@
         </form>
         <br>
         <br>
-        <h3>Delete user by id</h3>
+        <h3>Видалити користувача за ідентифікатором</h3>
         <form action="removeUser" method="post">
             <input class="adm-type" type="number" name="id" placeholder="id of user">
             <br>

@@ -25,26 +25,23 @@
 
 <div class="container-fluid content-wrapper loginpol" id="content">
     <div class="title">
-        Log in to Your "Magic Time" Account
-    </div>
-    <div class="title1 center">
-        !  You need to log in to buy the watch !
+        Увійти в ваш акаунт "Magic Time"
     </div>
     <br>
     <br>
 
     <div class="col-65 log-container">
         <form action="${loginUrl}" method="post">
-            <label for="fname">Username</label>
+            <label for="fname">Ім'я користувача</label>
             <br>
             <input type="text" id="fname" name="username" placeholder="Username" required>
             <br>
-            <label for="lname">Password</label>
+            <label for="lname">Пароль</label>
             <br>
             <input type="password" id="lname" name="password" placeholder="********" required>
             <br>
             <br>
-            <input type="submit" value="Log in">
+            <input type="submit" value="Вхід">
 
             <input type="hidden"
                    name="${_csrf.parameterName}"
@@ -53,8 +50,13 @@
     </div>
     <br>
     <br>
-    <div class="bottom">
-        <a href="registration" class="btn1">Not Registered yet</a>
+    <div class="main-wrapper">
+        <div class="bottom">
+            <a href="registration" class="prod-buy-button">Не зареєстрований</a>
+        </div>
+        <div>
+            <a href="forgot1" class="forgot-pass">Забули пароль</a>
+        </div>
     </div>
 </div>
 

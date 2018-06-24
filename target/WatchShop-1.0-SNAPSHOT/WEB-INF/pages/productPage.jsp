@@ -23,7 +23,7 @@
     <%@include file="header.jsp" %>
     <div class="main-wrapper">
         <h1>Watch detail</h1>
-        <h3>Here is the detail information about product</h3>
+        <h3>Детальна інформація про продукт</h3>
 
         <div class="prodLeft">
             <img class="prod-img" src="${product.image}" alt="image">
@@ -35,14 +35,14 @@
             </div>
             <div class="center prod-buy">
                 <sec:authorize access="isAuthenticated()">
-                    <a class="none" href="#"><div class="prod-buy-button">Buy this product Now</div></a>
+                    <a class="none" href="addToBasket"><div class="prod-buy-button">Перейти до оплати</div></a>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
-                    <a class="none" href="login"><div class="prod-buy-button">Buy this product Now</div></a>
+                    <a class="none" href="login"><div class="prod-buy-button">Перейти до оплати</div></a>
                 </sec:authorize>
 
                 <br>
-                <a class="none" href=""><div class="prod-buy-button">Add to basket</div></a>
+                <a class="none" href=""><div class="prod-buy-button">Добавити в корзину</div></a>
             </div>
         </div>
 

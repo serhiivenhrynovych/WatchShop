@@ -22,7 +22,57 @@
 <div class="wrapper">
     <%@include file="header.jsp" %>
 
-    <h1>Your basket</h1>
+    <div class="main-wrapper">
+        <h1>Ваша Корзина</h1>
+
+        <div class="basket-product">
+            <div class="basket-img">
+                <img class="b-img" src="/img/watch1.jpg" alt="">
+            </div>
+            <div class="basket-product-name">
+                Назва товару: test 1
+            </div>
+            <div class="basket-quantity">
+                Кількість: 1
+            </div>
+            <div class="basket-price">
+                <div class="price">Ціна товару:</div>
+                250$
+            </div>
+        </div>
+        <div class="basket-product">
+            <div class="basket-img">
+                <img class="b-img" src="/img/watch4.jpg" alt="">
+            </div>
+            <div class="basket-product-name">
+                Назва товару: test 3
+            </div>
+            <div class="basket-quantity">
+                Кількість: 1
+            </div>
+            <div class="basket-price">
+                <div class="price">Ціна товару:</div>
+                400$
+            </div>
+        </div>
+
+        <div class="basket-pay">
+            <div class="basket-total">
+                <div class="price1">Загальна сума:</div>
+                650$
+            </div>
+        </div>
+        <div class="basket-button">
+            <sec:authorize access="isAuthenticated()">
+                <a class="none" href="addToBasket">
+                    <div class="prod-buy-button">Перейти до оплати</div>
+                </a>
+            </sec:authorize>
+        </div>
+
+
+    </div>
+
 
     <%@include file="footer.jsp" %>
 

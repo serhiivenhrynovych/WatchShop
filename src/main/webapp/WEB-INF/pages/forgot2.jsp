@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: serhii
-  Date: 28.05.18
-  Time: 10:37
+  Date: 16.06.18
+  Time: 22:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><html>
 <head>
-    <title>Registration</title>
+    <title>Login</title>
     <link rel="stylesheet" href="/css/headStyle.css">
     <link rel="stylesheet" href="/css/footStyle.css">
     <link rel="stylesheet" href="/css/logStyle.css">
@@ -23,10 +23,9 @@
 
 <%@include file="header.jsp" %>
 
-
 <div class="container-fluid content-wrapper loginpol" id="content">
     <div class="title">
-        Створення акаунту "Magic Time"
+        Введіть новий пароль "Magic Time"
     </div>
     <br>
     <br>
@@ -34,28 +33,16 @@
     <div class="col-65">
         <form action="createUser" method="post">
 
-            <label for="fname">Ім'я користувача</label>
-            <br>
-            <input type="text" pattern="^[a-zA-Z]{3,15}$" id="fname" name="username" placeholder="Username" required>
-            <br>
-            <label for="inputMail">Електронна пошта</label>
-            <br>
-            <input type="email" id="inputMail" name="email" placeholder="example@gmail.com" required>
-            <br>
             <label for="inputPass">Пароль</label>
             <br>
             <input type="password" id="inputPass" name="password" placeholder="********" required>
             <br>
-            <label for="address">Адреса</label>
+            <label for="inputPass">Підтвердження паролю</label>
             <br>
-            <input type="text" id="address" name="address" placeholder="Address">
-            <br>
-            <label for="phone">Мобільний телефон</label>
-            <br>
-            <input type="text" id="phone" name="phone" placeholder="Phone number">
+            <input type="password" name="password" placeholder="********" required>
             <br>
             <br>
-            <input type="submit" value="Реєстрація">
+            <input type="submit" value="Відправити">
 
             <input type="hidden"
                    name="${_csrf.parameterName}"
@@ -69,3 +56,4 @@
 
 </body>
 </html>
+
