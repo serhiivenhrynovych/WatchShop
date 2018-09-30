@@ -20,7 +20,7 @@
     padding: 8px 15px;
     font-size: 22px;
     display: inline-block;
-    width: 49%;
+    width: 25%;
     float: left;
     color: #08ac76;
     text-decoration: underline;
@@ -96,4 +96,16 @@
     float: right;
     font-size: 22px;
     display: inline-block;
+}
+.basket-quantity1 {
+    float: right;
+    font-size: 22px;
+    display: inline-block;
+    background-color: #b90000;
+    color: white;
+    padding: 0 5px;
+}
+
+.none {
+    text-decoration: none;
 }

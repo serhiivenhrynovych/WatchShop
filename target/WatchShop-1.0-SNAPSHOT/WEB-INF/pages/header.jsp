@@ -18,7 +18,7 @@
                 +38 (099) 5521395
             </div>
             <div class="header-number">
-                +38 (099) 5521395
+                +38 (096) 8381538
             </div>
         </div>
         <div id="mainListDiv" class="main_list">
@@ -71,7 +71,7 @@
     $(window).scroll(function () {
         if ($(document).scrollTop() > 0) {
             $('.nav').addClass('affix');
-            console.log("OK");
+
         } else {
             $('.nav').removeClass('affix');
         }

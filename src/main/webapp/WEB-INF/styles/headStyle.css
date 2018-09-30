@@ -6,7 +6,6 @@ body {
 }
 
 .main-wrapper {
-    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -75,10 +74,13 @@ body {
     color: #fff;
     line-height: 65px;
     font-size: 20px;
+
 }
 
 .nav div.main_list ul li a:hover {
-    color: #00E676;
+    color: #fac42b;
+    border-bottom: 2px solid;
+
 }
 
 /* Home section */
@@ -286,7 +288,7 @@ body {
 
 .affix {
     padding: 0;
-    background-color: #373b3a;
+    background-color: #000;
 }
 
 .header-logo-img {
@@ -481,7 +483,7 @@ body {
 
 .main-before-slider {
     height: 65px;
-    background-color: #08734e;
+    background-color: #999999;
 }
 
 .dropbtn {

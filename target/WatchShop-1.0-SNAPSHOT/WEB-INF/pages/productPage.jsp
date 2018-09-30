@@ -50,14 +50,7 @@
 
         <div class="prodEnd">
             <h2>Description</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda eligendi expedita, iure, magni nam
-                nobis, nostrum optio qui sequi totam voluptates. Dolore, nisi quos. Magnam neque quo repellat sunt.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ab alias aliquid aperiam assumenda atque
-                commodi, consequatur cum doloremque eaque harum hic inventore, nam nostrum placeat ratione sequi vero
-                voluptate.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ducimus ea maxime nemo optio.
-                Accusantium aperiam aut consectetur deleniti ea fuga labore nam, numquam placeat quaerat rerum similique
-                tempore, voluptas.</p>
+            <p>Bulova 96A120 is a super special Gents watch. Case material is Stainless Steel while the dial colour is Brown. This watch is market as water resistant. It means it can withstand slight splashes and rain, but is NOT to be immersed in water. We ship it with an original box and a guarantee from the manufacturer.</p>
         </div>
     </div>
     <%@include file="footer.jsp" %>

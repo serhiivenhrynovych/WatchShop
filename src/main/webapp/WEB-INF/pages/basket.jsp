@@ -32,12 +32,15 @@
             <div class="basket-product-name">
                 Назва товару: test 1
             </div>
-            <div class="basket-quantity">
-                Кількість: 1
+            <div class="basket-quantity1">
+                X
             </div>
             <div class="basket-price">
                 <div class="price">Ціна товару:</div>
                 250$
+            </div>
+            <div class="basket-quantity">
+                Кількість: 1
             </div>
         </div>
         <div class="basket-product">
@@ -47,12 +50,15 @@
             <div class="basket-product-name">
                 Назва товару: test 3
             </div>
-            <div class="basket-quantity">
-                Кількість: 1
+            <div class="basket-quantity1">
+                X
             </div>
             <div class="basket-price">
                 <div class="price">Ціна товару:</div>
                 400$
+            </div>
+            <div class="basket-quantity">
+                Кількість: 1
             </div>
         </div>
 

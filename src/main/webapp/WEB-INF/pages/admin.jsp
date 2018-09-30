@@ -26,7 +26,25 @@
         <h3>добавити новий продукт</h3>
 
         <form action="saveProduct" method="post" enctype="multipart/form-data">
-            <input class="adm-type" type="text" name="productName" placeholder="Product name" required>
+            <input class="adm-type" type="text" name="productName" placeholder="Ім'я продукту" required>
+            <br>
+            <input class="adm-type" type="text" name="productName" placeholder="Бренд" required>
+            <br>
+            <input class="adm-type" type="text" name="productName" placeholder="Країна" required>
+            <br>
+            <input class="adm-type" type="text" name="productName" placeholder="Тип ремінця" required>
+            <br>
+            <input class="adm-type" type="text" name="productName" placeholder="Циферблад" required>
+            <br>
+            <input class="adm-type" type="text" name="productName" placeholder="Додаткові особливості" required>
+            <br>
+            <input class="adm-type" type="text" name="productName" placeholder="Тип роботи" required>
+            <br>
+            <input class="adm-type" type="text" name="productName" placeholder="Форма" required>
+            <br>
+            <input class="adm-type" type="text" name="productName" placeholder="Розмір" required>
+            <br>
+            <input class="adm-type" type="text" name="productName" placeholder="Стиль" required>
             <br>
             <input class="adm-type" type="number" name="price" placeholder="Price" required>
             <br>
